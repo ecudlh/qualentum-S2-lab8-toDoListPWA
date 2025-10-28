@@ -12,8 +12,7 @@ export class App extends LitElement {
         header {
             display: flex;
             align-items: center;
-            max-width: 420px;
-            margin: 24px auto;
+            margin-top: 24px;
             margin-bottom: 0;
             background-color: #2b8aef;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -23,12 +22,19 @@ export class App extends LitElement {
         .logo {
             width: 60px;
             height: 60px;
-            margin-right: 16px;
+            padding: 8px;
         }
 
         h1 {
             font-family: Arial, sans-serif;
             color: #fff;
+            font-size: 24px;
+        }
+
+        @media (min-width: 420px) {
+            header { max-width: 420px; margin: 0 auto; margin-top: 24px;}
+            h1 {font-size: 32px;}
+            logo {margin-right: 8px;}
         }
     `;
 

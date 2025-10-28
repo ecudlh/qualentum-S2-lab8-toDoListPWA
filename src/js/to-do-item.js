@@ -51,7 +51,7 @@ export class ToDoItem extends LitElement {
         }
         
         .card:has(span.completada) {
-            background-color: #d4edda;
+            background-color: #dbdbdb;
         }
 
         button.delete {

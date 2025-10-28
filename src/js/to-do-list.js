@@ -25,7 +25,7 @@ export class ToDoList extends LitElement {
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            padding: 24px;
+            padding-block: 24px;
         }
 
         form {
@@ -33,7 +33,9 @@ export class ToDoList extends LitElement {
             gap: 8px;
             width: 100%;
             align-items: center;
-            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 8px;
         }
 
         input[type="text"] {
