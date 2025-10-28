@@ -1,6 +1,7 @@
+export {};
+
 const STATIC_CACHE = 'static-v1';
 const DYNAMIC_CACHE = 'dynamic-v1';
-
 // Archivos base del "app shell" (lo que necesita tu PWA para funcionar offline)
 const APP_SHELL = [
     '/',
@@ -9,6 +10,10 @@ const APP_SHELL = [
     '/icons/logo.png',
     '/main.bundle.js',
     '/offline.html',
+    '/styles.css',
+    '/icons/icon-192.png',
+    '/icons/icon-512.png',
+    '/icons/icon-maskable.png'
 ];
 
 // Precaching del App Shell
