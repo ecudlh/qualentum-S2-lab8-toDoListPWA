@@ -43,6 +43,7 @@ export class ToDoItem extends LitElement {
         span {
             flex: 1;
             word-break: break-word;
+            font-family: sans-serif;
         }
 
         .completada {

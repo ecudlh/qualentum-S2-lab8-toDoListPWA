@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import './to-do-item.js';
+import { getAllTasks, addTask, deleteTask, updateTask } from './db.js';
 
 export class ToDoList extends LitElement {
     static properties = {
@@ -11,6 +12,15 @@ export class ToDoList extends LitElement {
         super();
         this.tareas = [];
         this.nuevaTarea = '';
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this._loadTasks();
+    }
+
+    async _loadTasks() {
+        this.tareas = await getAllTasks();
     }
 
     static styles = css `
@@ -99,9 +109,8 @@ export class ToDoList extends LitElement {
         this.nuevaTarea = e.target.value;
     }
 
-    _onSubmit(e) {
+    async _onSubmit(e) {
         e.preventDefault();
-
         const texto = this.nuevaTarea.trim();
         if (!texto) return;
 
@@ -109,24 +118,28 @@ export class ToDoList extends LitElement {
             id: Date.now(),
             texto,
             completada: false
-        }
+        };
 
+        await addTask(nueva);
         this.tareas = [...this.tareas, nueva];
         this.nuevaTarea = '';
     }
 
-    _onTareaCompletada(e) {
+    async _onTareaCompletada(e) {
         const id = Number(e.target.getAttribute('data-id'));
         const nuevoEstado = e.detail.completada;
 
-        this.tareas = this.tareas.map(t =>
-            t.id === id ? { ...t, completada: nuevoEstado } : t
-        );
+        const tareaActualizada = this.tareas.find(t => t.id === id);
+        if (tareaActualizada) {
+            const tarea = { ...tareaActualizada, completada: nuevoEstado };
+            await updateTask(tarea);
+            this.tareas = this.tareas.map(t => (t.id === id ? tarea : t));
+        }
     }
 
-    _onTareaEliminada(e) {
+    async _onTareaEliminada(e) {
         const id = Number(e.target.getAttribute('data-id'));
-
+        await deleteTask(id);
         this.tareas = this.tareas.filter(t => t.id !== id);
     }
 }
