@@ -1,10 +1,10 @@
 import { App } from './src/js/app.js';
 
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('./sw.js', {scope: '/'})
-//         .then(() => console.log('service worker registered'))
-//         .catch((err) => console.log('service worker not registered', err));
-// }
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js', { type: 'module' })
+        .then(() => console.log('service worker registered'))
+        .catch((err) => console.log('service worker not registered', err));
+}
 
 customElements.define('app-component', App);
 const app = document.getElementById('app');
