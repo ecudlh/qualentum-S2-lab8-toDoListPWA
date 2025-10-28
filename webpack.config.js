@@ -70,7 +70,7 @@ module.exports = (env, argv) => ({
             patterns : [
                 // { from: "./src/images/screenshots", to: "assets" },
                 { from: "./sw.js", to: "./" },
-                // { from: "src/images/icons/*.png", to: "assets/[name][ext]" },
+                { from: "src/images/icons/*.png", to: "assets/[name][ext]" },
             ],
         }),
     ],

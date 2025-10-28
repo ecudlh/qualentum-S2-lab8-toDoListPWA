@@ -6,7 +6,7 @@ const APP_SHELL = [
     '/',
     '/index.html',
     '/manifest.json',
-    '/assets/logo.jpg',
+    '/assets/logo.png',
     '/main.bundle.js',
 ];
 
