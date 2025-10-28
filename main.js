@@ -1,7 +1,7 @@
 import { App } from './src/js/app.js';
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js', { type: 'module' })
+    navigator.serviceWorker.register('/sw.js', { type: 'module' })
         .then(() => console.log('service worker registered'))
         .catch((err) => console.log('service worker not registered', err));
 }

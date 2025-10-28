@@ -6,8 +6,9 @@ const APP_SHELL = [
     '/',
     '/index.html',
     '/manifest.json',
-    '/assets/logo.png',
+    '/icons/logo.png',
     '/main.bundle.js',
+    '/offline.html',
 ];
 
 // Precaching del App Shell
@@ -60,7 +61,9 @@ self.addEventListener('fetch', (event) => {
         request.headers.get('accept')?.includes('text/html') ||
         request.headers.get('accept')?.includes('application/json')
     ) {
-        event.respondWith(networkFirst(request));
+        event.respondWith(
+            networkFirst(request).catch(() => caches.match('/offline.html'))
+        );
         return;
     }
 

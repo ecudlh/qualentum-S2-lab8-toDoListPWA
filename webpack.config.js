@@ -43,7 +43,7 @@ module.exports = (env, argv) => ({
                 exclude: /node_modules/,
                 type: 'asset/resource',
                 generator: {
-                    filename: './assets/[name][ext]'
+                    filename: './icons/[name][ext]'
                 },
             },
             {
@@ -68,9 +68,9 @@ module.exports = (env, argv) => ({
         }),
         new CopyPlugin({
             patterns : [
-                // { from: "./src/images/screenshots", to: "assets" },
                 { from: "./sw.js", to: "./" },
-                { from: "src/images/icons/*.png", to: "assets/[name][ext]" },
+                { from: "src/images/icons/*.png", to: "icons/[name][ext]" },
+                { from: './offline.html', to: '' },
             ],
         }),
     ],

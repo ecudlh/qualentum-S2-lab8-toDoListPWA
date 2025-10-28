@@ -141,7 +141,7 @@
                 `)}
             </div>
 
-        `}_onInput(t){this.nuevaTarea=t.target.value}async _onSubmit(t){t.preventDefault();const e=this.nuevaTarea.trim();if(!e)return;const s={id:Date.now(),texto:e,completada:!1};await async function(t){const e=await Ut();await e.put(Ot,t)}(s),this.tareas=[...this.tareas,s],this.nuevaTarea=""}async _onTareaCompletada(t){const e=Number(t.target.getAttribute("data-id")),s=t.detail.completada,i=this.tareas.find(t=>t.id===e);if(i){const t={...i,completada:s};await async function(t){const e=await Ut();await e.put(Ot,t)}(t),this.tareas=this.tareas.map(s=>s.id===e?t:s)}}async _onTareaEliminada(t){const e=Number(t.target.getAttribute("data-id"));await async function(t){const e=await Ut();await e.delete(Ot,t)}(e),this.tareas=this.tareas.filter(t=>t.id!==e)}}customElements.define("todo-list",Mt);const Nt=t.p+"./assets/logo.png";class Bt extends ct{static styles=o`
+        `}_onInput(t){this.nuevaTarea=t.target.value}async _onSubmit(t){t.preventDefault();const e=this.nuevaTarea.trim();if(!e)return;const s={id:Date.now(),texto:e,completada:!1};await async function(t){const e=await Ut();await e.put(Ot,t)}(s),this.tareas=[...this.tareas,s],this.nuevaTarea=""}async _onTareaCompletada(t){const e=Number(t.target.getAttribute("data-id")),s=t.detail.completada,i=this.tareas.find(t=>t.id===e);if(i){const t={...i,completada:s};await async function(t){const e=await Ut();await e.put(Ot,t)}(t),this.tareas=this.tareas.map(s=>s.id===e?t:s)}}async _onTareaEliminada(t){const e=Number(t.target.getAttribute("data-id"));await async function(t){const e=await Ut();await e.delete(Ot,t)}(e),this.tareas=this.tareas.filter(t=>t.id!==e)}}customElements.define("todo-list",Mt);const Nt=t.p+"./icons/logo.png";class Bt extends ct{static styles=o`
         .to-do-list--container {
 
         }
@@ -181,4 +181,4 @@
                 </header>
                 <todo-list></todo-list>
             </div>
-        `}}"serviceWorker"in navigator&&navigator.serviceWorker.register("./sw.js",{type:"module"}).then(()=>console.log("service worker registered")).catch(t=>console.log("service worker not registered",t)),customElements.define("app-component",Bt),document.getElementById("app").innerHTML="<app-component></app-component>"})();
+        `}}"serviceWorker"in navigator&&navigator.serviceWorker.register("/sw.js",{type:"module"}).then(()=>console.log("service worker registered")).catch(t=>console.log("service worker not registered",t)),customElements.define("app-component",Bt),document.getElementById("app").innerHTML="<app-component></app-component>"})();
